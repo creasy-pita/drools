@@ -209,6 +209,7 @@ public class RuleExecutor {
     public void reEvaluateNetwork(InternalAgenda agenda) {
         if ( isDirty() ) {
             setDirty(false);
+            //使用PathMemory pmem说明是只需要fact数据修改后的相关路径重新评估就可以了  creasypita
             NETWORK_EVALUATOR.evaluateNetwork(pmem, this, agenda);
         }
     }

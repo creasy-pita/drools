@@ -39,6 +39,9 @@ public class SequentialRuleEvaluator extends AbstractRuleEvaluator implements Ru
                                 int fireCount,
                                 int fireLimit,
                                 InternalAgendaGroup group ) {
+        //creasypita：agendagroup从命中的规则池中取出一个执行
+        //为什么只取一个执行
+        //如果是InternalAgendaGroup实现类是AgendaGroupQueueImpl，是按优先级获取一个RuleAgendaItem
         RuleAgendaItem item = sequential ? (RuleAgendaItem) group.remove() : (RuleAgendaItem) group.peek();
         return item != null ? internalEvaluateAndFire( filter, fireCount, fireLimit, item ) : 0;
     }

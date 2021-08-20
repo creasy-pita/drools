@@ -1048,6 +1048,7 @@ public class DefaultAgenda
             while ( isFiring()  )  {
                 if ( head != null ) {
                     // it is possible that there are no action propagations, but there are rules to fire.
+                    //PropagationEntry head 类似于链表， 会从head-getnext()->tail整个链路去解析
                     propagationList.flush(head);
                     head = null;
                 }
@@ -1059,6 +1060,7 @@ public class DefaultAgenda
                 }
 
                 evaluateEagerList();
+                // creasypita 规则网络结合fact数据评估后，有冲突（命中）的规则，就会加入focusgroup中，待后续Agenda执行执行RHS部分的内容
                 InternalAgendaGroup group = getNextFocus();
                 if ( group != null && !limitReached ) {
                     // only fire rules while the limit has not reached.

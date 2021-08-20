@@ -231,6 +231,20 @@ public class RuleNetworkEvaluator {
         innerEval(pmem, node, bit, nodeMem, smems, smemIndex, trgTuples, agenda, stack, processRian, executor);
     }
 
+    /**
+     * 完成规则网络内部评估  ，处理过程可参考rete算法的评估阶段 creasypita
+     * @param pmem
+     * @param node
+     * @param bit
+     * @param nodeMem
+     * @param smems
+     * @param smemIndex
+     * @param trgTuples
+     * @param agenda
+     * @param stack
+     * @param processRian
+     * @param executor
+     */
     public void innerEval(PathMemory pmem,
                           NetworkNode node,
                           long bit,
