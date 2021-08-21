@@ -85,6 +85,7 @@ public class RuleExecutor {
                                        int fireCount,
                                        int fireLimit ) {
         reEvaluateNetwork( agenda );
+        //creasypita 规则网络评估后，对评估结果进行选择并执行：命中的规则会执行if then 的结果部分
         return fire(agenda.getWorkingMemory(), agenda, filter, fireCount, fireLimit);
     }
 
@@ -112,7 +113,7 @@ public class RuleExecutor {
             RuleTerminalNode rtn = (RuleTerminalNode) pmem.getPathEndNode();
             RuleImpl rule = rtn.getRule();
             Tuple tuple = getNextTuple();
-            
+            // creasypita 命中的规则会执行结果部分
             if (rule.isAllMatches()) {
                 fireConsequenceEvent(wm, agenda, (AgendaItem) tuple, DefaultAgenda.ON_BEFORE_ALL_FIRES_CONSEQUENCE_NAME);
             }
@@ -131,7 +132,8 @@ public class RuleExecutor {
                     // only relevant for seralization, to not refire Matches already fired
                     continue;
                 }
-
+                // creasypita item包含了一个规则的结果部分，这里执行结果部分
+                // 会把结果部分的代码包装成一个方法，动态加载执行
                 fireActivation( wm, agenda, item );
                 localFireCount++;
 

@@ -1048,7 +1048,8 @@ public class DefaultAgenda
             while ( isFiring()  )  {
                 if ( head != null ) {
                     // it is possible that there are no action propagations, but there are rules to fire.
-                    //PropagationEntry head 类似于链表， 会从head-getnext()->tail整个链路去解析
+                    //PropagationEntry head 类似于链表，
+                    // flush 会从head-getnext()->tail整个链路对规则网络基于数据去评估解析
                     propagationList.flush(head);
                     head = null;
                 }
